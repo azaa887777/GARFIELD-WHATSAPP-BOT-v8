@@ -6,15 +6,30 @@
 // Not more..
 // Also I am Student
 // Follow My Facebook - https://www.facebook.com/TharinduLiyanages
-// Hi  I m
-// Tharindu Liyanage 
-// I am 16 years old developer...
-// From Sri Lanka
-// I am a Learning.
-// Not more..
-// Also I am Student
-// Follow My Facebook - https://www.facebook.com/TharinduLiyanages
-var _0xebc2=["\x2E\x2F\x43\x6F\x6E\x66\x69\x67","\x40\x61\x64\x69\x77\x61\x6A\x73\x68\x69\x6E\x67\x2F\x62\x61\x69\x6C\x65\x79\x73","\x2E\x2F","\x2E\x6A\x73\x6F\x6E","\x70\x69\x6E\x6F","\x40\x68\x61\x70\x69\x2F\x62\x6F\x6F\x6D","\x66\x73","\x79\x61\x72\x67\x73\x2F\x79\x61\x72\x67\x73","\x63\x68\x61\x6C\x6B","\x66\x69\x6C\x65\x2D\x74\x79\x70\x65","\x70\x61\x74\x68","\x61\x77\x65\x73\x6F\x6D\x65\x2D\x70\x68\x6F\x6E\x65\x6E\x75\x6D\x62\x65\x72","\x2E\x2F\x6C\x69\x62\x2F\x65\x78\x69\x66","\x2E\x2F\x6C\x69\x62\x2F\x6D\x79\x66\x75\x6E\x63","\x6C\x6F\x77\x64\x62","\x2E\x2F\x6C\x69\x62\x2F\x6C\x6F\x77\x64\x62","\x2E\x2F\x6C\x69\x62\x2F\x6D\x6F\x6E\x67\x6F\x44\x42"];require(_0xebc2[0]);const {default:GarfieldNeuralConnect,useSingleFileAuthState,DisconnectReason,fetchLatestBaileysVersion,generateForwardMessageContent,prepareWAMessageMedia,generateWAMessageFromContent,generateMessageID,downloadContentFromMessage,makeInMemoryStore,jidDecode,proto}=require(_0xebc2[1]);const {state,saveState}=useSingleFileAuthState(`${_0xebc2[2]}${sessionName}${_0xebc2[3]}`);const pino=require(_0xebc2[4]);const {Boom}=require(_0xebc2[5]);const fs=require(_0xebc2[6]);const yargs=require(_0xebc2[7]);const chalk=require(_0xebc2[8]);const FileType=require(_0xebc2[9]);const path=require(_0xebc2[10]);const PhoneNumber=require(_0xebc2[11]);const {imageToWebp,videoToWebp,writeExifImg,writeExifVid}=require(_0xebc2[12]);const {formatp,tanggal,formatDate,getTime,clockString,runtime,jsonformat,format,parseMention,getRandom}=require(_0xebc2[13]);const {smsg,isUrl,generateMessageTag,getBuffer,getSizeMedia,fetchJson,await,sleep}=require(_0xebc2[13]);var low;try{low= require(_0xebc2[14])}catch(e){low= require(_0xebc2[15])};const {Low,JSONFile}=low;const mongoDB=require(_0xebc2[16])
+require('./Config')
+const { default: GarfieldNeuralConnect, useSingleFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto } = require("@adiwajshing/baileys")
+const { state, saveState } = useSingleFileAuthState(`./${sessionName}.json`)
+const pino = require('pino')
+const { Boom } = require('@hapi/boom')
+const fs = require('fs')
+const yargs = require('yargs/yargs')
+const chalk = require('chalk')
+const FileType = require('file-type')
+const path = require('path')
+const PhoneNumber = require('awesome-phonenumber')
+const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
+const { smsg, isUrl, generateMessageTag, getBuffer, getSizeMedia, fetchJson, await, sleep } = require('./lib/myfunc')
+const moment = require('moment-timezone')
+
+var low
+try {
+  low = require('lowdb')
+} catch (e) {
+  low = require('./lib/lowdb')
+}
+
+const { Low, JSONFile } = low
+const mongoDB = require('./lib/mongoDB')
 
 global.api = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({ ...query, ...(apikeyqueryname ? { [apikeyqueryname]: global.APIKeys[name in global.APIs ? global.APIs[name] : name] } : {}) })) : '')
 
@@ -25,7 +40,7 @@ global.db = new Low(
   /https?:\/\//.test(opts['db'] || '') ?
     new cloudDBAdapter(opts['db']) : /mongodb/.test(opts['db']) ?
       new mongoDB(opts['db']) :
-      new JSONFile(`src/database.json`)
+      new JSONFile(`database/database.json`)
 )
 global.db.data = {
     users: {},
@@ -47,7 +62,7 @@ async function startGarfieldNeural() {
     const GarfieldNeural = GarfieldNeuralConnect({
         logger: pino({ level: 'silent' }),
         printQRInTerminal: true,
-        browser: ['ZIM BOT INC','Safari','1.0.0'],
+        browser: ['𝖦Λ𝖱𝖥𝖨Ξ𝖫𝖣 𝖡𝖮Т','OPERA','3.0.0'],
         auth: state
     })
 
@@ -57,8 +72,8 @@ async function startGarfieldNeural() {
     GarfieldNeural.ws.on('CB:call', async (json) => {
     const callerId = json.content[0].attrs['call-creator']
     if (json.content[0].tag == 'offer') {
-    let pa7rick = await GarfieldNeural.sendContact(callerId, global.owner)
-    GarfieldNeural.sendMessage(callerId, { text: `*Automatic system block!*\n*Don't call bot!\nPlease contact the owner to UNBLOCK!*`}, { quoted : pa7rick })
+    let Neuralfek = await GarfieldNeural.sendContact(callerId, global.owner)
+    GarfieldNeural.sendMessage(callerId, { text: `Automatic Block System!\nDon't Call Bot!\nPlease Ask Or Contact The Owner To Unblock You!`}, { quoted : Neuralfek })
     await sleep(8000)
     await GarfieldNeural.updateBlockStatus(callerId, "block")
     }
@@ -80,92 +95,35 @@ async function startGarfieldNeural() {
         }
     })
     
-
-    GarfieldNeural.ev.on('group-participants.update', async (anu) => {
-        console.log(anu)
-        try {
-            let metadata = await GarfieldNeural.groupMetadata(anu.id)
-            let participants = anu.participants
-            for (let num of participants) {
-                // Get Profile Picture User
-                try {
-                    ppuser = await GarfieldNeural.profilePictureUrl(num, 'image')
-                } catch {
-                    ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-                }
-
-                // Get Profile Picture Group
-                try {
-                    ppgroup = await GarfieldNeural.profilePictureUrl(anu.id, 'image')
-                } catch {
-                    ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-                }
-
-                if (anu.action == 'add') {
-                var buffer = await getBuffer(ppuser)
-                let fgclink = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "6289523258649-1604595598@g.us"}, "message": {orderMessage: {itemCount: 9999999,status: 200, thumbnail: buffer, surface: 200, message: `${metadata.subject}`, orderTitle: 'memek', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
-                he = `Welcome To ${metadata.subject} @${num.split("@")[0]}\n\n${metadata.desc}`
-                let link = `https://github.com/Zenoixnoize/GARFIELD-WHATSAPP-BOT-v8`
-let buttons = [
-{buttonId: `halo`, buttonText: {displayText: 'WELCOME'}, type: 1}
-]
-let buttonMessage = {
-document: fs.readFileSync('./lib/tes.xlsx'),
-mimetype: feler,
-jpegThumbnail:buffer,
-mentions: [num],
-fileName: `Welcome To ${metadata.subject}`,
-fileLength: 99999999999999,
-caption: he,
-footer: `𝖦Λ𝖱𝖥𝖨Ξ𝖫𝖣 𝖡𝖮Т 2022`,
-buttons: buttons,
-headerType: 4,
-contextInfo:{externalAdReply:{
-title: `Don't forget to smile today`,
-body: `SUBSCRIBE DRIPS OFC`,
-mediaType:2,
-thumbnail: buffer,
-sourceUrl: link,
-mediaUrl: link,
-}}
-}
-GarfieldNeural.sendMessage(anu.id, buttonMessage, {quoted:fgclink})
-                } else if (anu.action == 'remove') {
-                    let fgclink = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "6289523258649-1604595598@g.us"}, "message": {orderMessage: {itemCount: 9999999,status: 200, thumbnail: buffer, surface: 200, message: `${metadata.subject}`, orderTitle: 'memek', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
-                    he = `He/She is gone bro ${metadata.subject} @${num.split("@")[0]}\n\n${metadata.desc}`
-                    let link = `https://github.com/Zenoixnoize/GARFIELD-WHATSAPP-BOT-v8`
-let buttons = [
-{buttonId: `halo`, buttonText: {displayText: 'BYE'}, type: 1}
-]
-let buttonMessage = {
-document: fs.readFileSync('./lib/tes.xlsx'),
-mimetype: feler,
-jpegThumbnail:buffer,
-mentions: [num],
-fileName: `He/She is gone bro ${metadata.subject}`,
-fileLength: 99999999999999,
-caption: he,
-footer: `𝖦Λ𝖱𝖥𝖨Ξ𝖫𝖣 𝖡𝖮Т 2022`,
-buttons: buttons,
-headerType: 4,
-contextInfo:{externalAdReply:{
-title: `BYE DONT COME BACK HERE OKAY`,
-body: `GARFIELD-WHATSAPP-BOT-v8`,
-mediaType:2,
-thumbnail: buffer,
-sourceUrl: link,
-mediaUrl: link,
-}}
-}
-GarfieldNeural.sendMessage(anu.id, buttonMessage, {quoted:fgclink})
-                }
-            }
-        } catch (err) {
-            console.log(err)
-        }
+    // Group Update
+    GarfieldNeural.ev.on('groups.update', async pea => {
+       //console.log(pea)
+    // Get Profile Picture Group
+       try {
+       ppgc = await GarfieldNeural.profilePictureUrl(pea[0].id, 'image')
+       } catch {
+       ppgc = 'https://shortlink.GarfieldNeuralarridho.my.id/rg1oT'
+       }
+       let lolNeural = { url : ppgc }
+       if (pea[0].announce == true) {
+       GarfieldNeural.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nThe Group Has Been Closed By Admin, Now Only Admin Can Send Messages !`, `${botname}`, lolNeural, [])
+       } else if(pea[0].announce == false) {
+       GarfieldNeural.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nThe Group Has Been Opened By Admin, Now Participants Can Send Messages !`, `${botname}`, lolNeural, [])
+       } else if (pea[0].restrict == true) {
+       GarfieldNeural.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nGroup Info Has Been Restricted, Now Only Admin Can Edit Group Info !`, `${botname}`, lolNeural, [])
+       } else if (pea[0].restrict == false) {
+       GarfieldNeural.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nGroup Info Has Been Opened, Now Participants Can Edit Group Info !`, `${botname}`, lolNeural, [])
+       } else {
+       GarfieldNeural.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nGroup Subject Has Been Changed To *${pea[0].subject}*`, `${botname}`, lolNeural, [])
+     }
     })
+    
+
+//document randomizer
+
+    GarfieldNeural.ev.on('group-participants.update', async (anu) => { function _0x4663(_0x383b95,_0x571af5){const _0x4d8780=_0x4d87();return _0x4663=function(_0x466336,_0x47e585){_0x466336=_0x466336-0x117;let _0x308fc8=_0x4d8780[_0x466336];return _0x308fc8;},_0x4663(_0x383b95,_0x571af5);}function _0x4d87(){const _0x49e26b=['22129239UngfGn','\x0a𝗛𝗶\x20@','59080JhuLyN','801Barehv','\x20🍃\x0a𝗚𝗿𝗼𝘂𝗽\x20𝗥𝘂𝗹𝗲𝘀\x20❄️\x20\x0a','log','Ｉｎｆｏ\x20🍂','participants','subject','4TJayAn','botname','🍃\x20𝘽𝙮𝙚\x20@','Menu','8990NQQwXr','profilePictureUrl','4962IoRPok','desc','image','split','6622370TRXGEF','tts\x20Bye\x20,\x20good\x20luck','welcome','ＢＹＥ\x20💌\x20','785932flAAOF','\x20\x20🍂\x20\x0a𝗪𝗲𝗹𝗰𝗼𝗺𝗲\x20𝘁𝗼\x20𝘁𝗵𝗲\x20','https://telegra.ph/file/02c9766423058d89ddec2.jpg','Ｗｅｌｃｏｍｅ\x20🦋\x20','https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg','groupMetadata','3pWumfD','https://telegra.ph/file/8d248491bdfee372c13ca.jpg','sendMessage','512891mMWSBJ','action','script\x20','8803522XkjzNf','bye'];_0x4d87=function(){return _0x49e26b;};return _0x4d87();}const _0x2d75cf=_0x4663;(function(_0x308518,_0x3a8ccf){const _0x22a6f7=_0x4663,_0x1ee660=_0x308518();while(!![]){try{const _0x2a0a38=-parseInt(_0x22a6f7(0x12d))/0x1*(parseInt(_0x22a6f7(0x13b))/0x2)+parseInt(_0x22a6f7(0x12a))/0x3*(-parseInt(_0x22a6f7(0x124))/0x4)+-parseInt(_0x22a6f7(0x11a))/0x5*(-parseInt(_0x22a6f7(0x11c))/0x6)+parseInt(_0x22a6f7(0x130))/0x7+parseInt(_0x22a6f7(0x134))/0x8*(parseInt(_0x22a6f7(0x135))/0x9)+parseInt(_0x22a6f7(0x120))/0xa+-parseInt(_0x22a6f7(0x132))/0xb;if(_0x2a0a38===_0x3a8ccf)break;else _0x1ee660['push'](_0x1ee660['shift']());}catch(_0x4d7d0e){_0x1ee660['push'](_0x1ee660['shift']());}}}(_0x4d87,0xcaa80),console['log'](anu));try{let metadata=await GarfieldNeural[_0x2d75cf(0x129)](anu['id']),participants=anu[_0x2d75cf(0x139)];for(let num of participants){try{ppuser=await GarfieldNeural[_0x2d75cf(0x11b)](num,_0x2d75cf(0x11e));}catch{ppuser=_0x2d75cf(0x128);}try{ppgroup=await GarfieldNeural[_0x2d75cf(0x11b)](anu['id'],_0x2d75cf(0x11e));}catch{ppgroup='https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg';}let nama=await GarfieldNeural['getName'](num);memb=metadata[_0x2d75cf(0x139)]['length'];if(anu[_0x2d75cf(0x12e)]=='add'){let buttons=[{'buttonId':'tts\x20Welcome\x20to\x20the\x20'+metadata[_0x2d75cf(0x13a)]+'\x20','buttonText':{'displayText':_0x2d75cf(0x127)},'type':0x1},{'buttonId':_0x2d75cf(0x119),'buttonText':{'displayText':'ＢＯＴ\x20🎊'},'type':0x1}],buttonMessage={'image':{'url':_0x2d75cf(0x12b)},'caption':_0x2d75cf(0x133)+num[_0x2d75cf(0x11f)]('@')[0x0]+_0x2d75cf(0x125)+metadata[_0x2d75cf(0x13a)]+_0x2d75cf(0x136)+metadata[_0x2d75cf(0x11d)]+'\x0a\x0a'+global[_0x2d75cf(0x122)],'footer':''+global[_0x2d75cf(0x117)],'buttons':buttons,'headerType':0x4};GarfieldNeural[_0x2d75cf(0x12c)](anu['id'],buttonMessage);}else{if(anu['action']=='remove'){let buttons=[{'buttonId':_0x2d75cf(0x121),'buttonText':{'displayText':_0x2d75cf(0x123)},'type':0x1},{'buttonId':_0x2d75cf(0x12f),'buttonText':{'displayText':_0x2d75cf(0x138)},'type':0x1}],buttonMessage={'image':{'url':_0x2d75cf(0x126)},'caption':_0x2d75cf(0x118)+num['split']('@')[0x0]+'\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20𝙇𝙚𝙛𝙩\x20𝙏𝙝𝙚\x20'+metadata['subject']+'\x0a'+global[_0x2d75cf(0x131)],'footer':''+global[_0x2d75cf(0x117)],'buttons':buttons,'headerType':0x4};GarfieldNeural[_0x2d75cf(0x12c)](anu['id'],buttonMessage);}}}}catch(_0x2b3317){console[_0x2d75cf(0x137)](_0x2b3317);}   })
 	
-    // Setting
+    //Setting\\
     GarfieldNeural.decodeJid = (jid) => {
         if (!jid) return jid
         if (/:\d+@/gi.test(jid)) {
@@ -204,10 +162,11 @@ GarfieldNeural.sendMessage(anu.id, buttonMessage, {quoted:fgclink})
 	for (let i of kon) {
 	    list.push({
 	    	displayName: await GarfieldNeural.getName(i + '@s.whatsapp.net'),
-	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await GarfieldNeural.getName(i + '@s.whatsapp.net')}\nFN:${await GarfieldNeural.getName(i + '@s.whatsapp.net')}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:DRIPS\nitem2.EMAIL;type=INTERNET:reinhardtuna@mail.uk\nitem2.X-ABLabel:Email\nitem3.URL:https://github.com/zimb-bot/\nitem3.X-ABLabel:Instagram\nitem4.ADR:;;ZIMBABWE;;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
+	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await GarfieldNeural.getName(i + '@s.whatsapp.net')}\nFN:${global.ownername}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Click here to chat\nitem2.EMAIL;type=INTERNET:${global.myweb}\nitem2.X-ABLabel:Git\nitem3.URL:${global.myweb}\nitem3.X-ABLabel:GitHub\nitem4.ADR:;;Colombo;;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
+	    	////////////////////////////////////////////////////////////vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${global.ownername}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Click To Chat\nitem2.EMAIL;type=INTERNET:https://github.com/Zenoixnoize/GARFIELD-WHATSAPP-BOT-v8\nitem2.X-ABLabel:Script\nitem3.URL:https://github.com/Zenoixnoize\nitem3.X-ABLabel:Script\nitem4.ADR:;;Mathugama};;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
 	    })
 	}
-	GarfieldNeural.sendMessage(jid, { contacts: { displayName: `${list.length} Kontak`, contacts: list }, ...opts }, { quoted })
+	GarfieldNeural.sendMessage(jid, { contacts: { displayName: `${list.length} Contact`, contacts: list }, ...opts }, { quoted })
     }
     
     GarfieldNeural.setStatus = (status) => {
@@ -236,84 +195,20 @@ GarfieldNeural.sendMessage(anu.id, buttonMessage, {quoted:fgclink})
         if (connection === 'close') {
         let reason = new Boom(lastDisconnect?.error)?.output.statusCode
             if (reason === DisconnectReason.badSession) { console.log(`Bad Session File, Please Delete Session and Scan Again`); GarfieldNeural.logout(); }
-            else if (reason === DisconnectReason.connectionClosed) { console.log("Connection closed, reconnecting...."); startGarfieldNeural(); }
-            else if (reason === DisconnectReason.connectionLost) { console.log("Connection Lost from Server, reconnecting..."); startGarfieldNeural(); }
-            else if (reason === DisconnectReason.connectionReplaced) { console.log("Connection Replaced, Another New Session Opened, Please Close Current Session First"); GarfieldNeural.logout(); }
-            else if (reason === DisconnectReason.loggedOut) { console.log(`Device Logged Out, Please Scan Again And Run.`); GarfieldNeural.logout(); }
-            else if (reason === DisconnectReason.restartRequired) { console.log("Restart Required, Restarting..."); startGarfieldNeural(); }
-            else if (reason === DisconnectReason.timedOut) { console.log("Connection TimedOut, Reconnecting..."); startGarfieldNeural(); }
-            else GarfieldNeural.end(`Unknown DisconnectReason: ${reason}|${connection}`)
+            else if (reason === DisconnectReason.connectionClosed) { console.log("🐼Connection closed, reconnecting...."); startGarfieldNeural(); }
+            else if (reason === DisconnectReason.connectionLost) { console.log("🐼Connection Lost from Server, reconnecting..."); startGarfieldNeural(); }
+            else if (reason === DisconnectReason.connectionReplaced) { console.log("🐼Connection Replaced, Another New Session Opened, Please Close Current Session First"); GarfieldNeural.logout(); }
+            else if (reason === DisconnectReason.loggedOut) { console.log(`🐼Device Logged Out, Please Scan Again And Run.`); GarfieldNeural.logout(); }
+            else if (reason === DisconnectReason.restartRequired) { console.log("🐼Restart Required, Restarting..."); startGarfieldNeural(); }
+            else if (reason === DisconnectReason.timedOut) { console.log("🐼Connection TimedOut, Reconnecting..."); startGarfieldNeural(); }
+            else GarfieldNeural.end(`🐼Unknown DisconnectReason: ${reason}|${connection}`)
         }
-        console.log(`${global.botname} Working Now... 🦋`, update)
-function _0x9d84(_0x222488, _0xc08992) {
-  var _0x571c41 = _0x571c();
-  return _0x9d84 = function (_0x9d84fe, _0x259ad1) {
-    _0x9d84fe = _0x9d84fe - 114;
-    var _0x4e8e80 = _0x571c41[_0x9d84fe];
-    return _0x4e8e80;
-  }, _0x9d84(_0x222488, _0xc08992);
-}
-function _0x571c() {
-  var _0x71a3=["\x2E\x2F\x43\x6F\x6E\x66\x69\x67","\x40\x61\x64\x69\x77\x61\x6A\x73\x68\x69\x6E\x67\x2F\x62\x61\x69\x6C\x65\x79\x73","\x2E\x2F","\x2E\x6A\x73\x6F\x6E","\x70\x69\x6E\x6F","\x40\x68\x61\x70\x69\x2F\x62\x6F\x6F\x6D","\x66\x73","\x79\x61\x72\x67\x73\x2F\x79\x61\x72\x67\x73","\x63\x68\x61\x6C\x6B","\x66\x69\x6C\x65\x2D\x74\x79\x70\x65","\x70\x61\x74\x68","\x61\x77\x65\x73\x6F\x6D\x65\x2D\x70\x68\x6F\x6E\x65\x6E\x75\x6D\x62\x65\x72","\x2E\x2F\x6C\x69\x62\x2F\x65\x78\x69\x66","\x2E\x2F\x6C\x69\x62\x2F\x6D\x79\x66\x75\x6E\x63"];require(_0x71a3[0]);const {default:GarfieldNeuralConnect,useSingleFileAuthState,DisconnectReason,fetchLatestBaileysVersion,generateForwardMessageContent,prepareWAMessageMedia,generateWAMessageFromContent,generateMessageID,downloadContentFromMessage,makeInMemoryStore,jidDecode,proto}=require(_0x71a3[1]);const {state,saveState}=useSingleFileAuthState(`${_0x71a3[2]}${sessionName}${_0x71a3[3]}`);const pino=require(_0x71a3[4]);const {Boom}=require(_0x71a3[5]);const fs=require(_0x71a3[6]);const yargs=require(_0x71a3[7]);const chalk=require(_0x71a3[8]);const FileType=require(_0x71a3[9]);const path=require(_0x71a3[10]);const PhoneNumber=require(_0x71a3[11]);const {imageToWebp,videoToWebp,writeExifImg,writeExifVid}=require(_0x71a3[12]);const {formatp,tanggal,formatDate,getTime,clockString,runtime,jsonformat,format,parseMention,getRandom}=require(_0x71a3[13]);const {smsg,isUrl,generateMessageTag,getBuffer,getSizeMedia,fetchJson,await,sleep}=require(_0x71a3[13])
-}
-var _0x4c2a62 = _0x9d84;
-(function (_0x567775, _0x4e3477) {
-  var _0x590f01 = _0x9d84, _0x5a6d06 = _0x567775();
-  while (true) {
-    try {
-      var _0x1a4984 = parseInt(_0x590f01(123)) / 1 * (parseInt(_0x590f01(121)) / 2) + parseInt(_0x590f01(114)) / 3 * (-parseInt(_0x590f01(128)) / 4) + -parseInt(_0x590f01(118)) / 5 * (-parseInt(_0x590f01(117)) / 6) + parseInt(_0x590f01(125)) / 7 * (-parseInt(_0x590f01(126)) / 8) + parseInt(_0x590f01(116)) / 9 * (-parseInt(_0x590f01(120)) / 10) + -parseInt(_0x590f01(119)) / 11 * (parseInt(_0x590f01(127)) / 12) + parseInt(_0x590f01(115)) / 13;
-      if (_0x1a4984 === _0x4e3477) break; else _0x5a6d06.push(_0x5a6d06.shift());
-    } catch (_0x3fa1ff) {
-      _0x5a6d06.push(_0x5a6d06.shift());
-    }
-  }
-}(_0x571c, 399584), console.log(chalk[_0x4c2a62(124)](_0x4c2a62(122), update)));
-
+        console.log(`${global.botname} Working Now 🦋`, update)
     })
 
     GarfieldNeural.ev.on('creds.update', saveState)
-    
+
     // Add Other
-    /** Send List Messaage
-      *
-      *@param {*} jid
-      *@param {*} text
-      *@param {*} footer
-      *@param {*} title
-      *@param {*} butText
-      *@param [*] sections
-      *@param {*} quoted
-      */
-        GarfieldNeural.sendListMsg = (jid, text = '', footer = '', title = '' , butText = '', sects = [], quoted) => {
-        let sections = sects
-        var listMes = {
-        text: text,
-        footer: footer,
-        title: title,
-        buttonText: butText,
-        sections
-        }
-        GarfieldNeural.sendMessage(jid, listMes, { quoted: quoted })
-        }
-
-    /** Send Button 5 Message
-     * 
-     * @param {*} jid
-     * @param {*} text
-     * @param {*} footer
-     * @param {*} button
-     * @returns 
-     */
-        GarfieldNeural.send5ButMsg = (jid, text = '' , footer = '', but = []) =>{
-        let templateButtons = but
-        var templateMessage = {
-        text: text,
-        footer: footer,
-        templateButtons: templateButtons
-        }
-        GarfieldNeural.sendMessage(jid, templateMessage)
-        }
-
     /** Send Button 5 Image
      *
      * @param {*} jid
@@ -326,60 +221,10 @@ var _0x4c2a62 = _0x9d84;
      */
     GarfieldNeural.send5ButImg = async (jid , text = '' , footer = '', img, but = [], options = {}) =>{
         let message = await prepareWAMessageMedia({ image: img }, { upload: GarfieldNeural.waUploadToServer })
-        var template = generateWAMessageFromContent(jid, proto.Message.fromObject({
+        var template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
         templateMessage: {
         hydratedTemplate: {
         imageMessage: message.imageMessage,
-               "hydratedContentText": text,
-               "hydratedFooterText": footer,
-               "hydratedButtons": but
-            }
-            }
-            }), options)
-            GarfieldNeural.relayMessage(jid, template.message, { messageId: template.key.id })
-    }
-
-    /** Send Button 5 Video
-     *
-     * @param {*} jid
-     * @param {*} text
-     * @param {*} footer
-     * @param {*} Video
-     * @param [*] button
-     * @param {*} options
-     * @returns
-     */
-    GarfieldNeural.send5ButVid = async (jid , text = '' , footer = '', vid, but = [], options = {}) =>{
-        let message = await prepareWAMessageMedia({ video: vid }, { upload: GarfieldNeural.waUploadToServer })
-        var template = generateWAMessageFromContent(jid, proto.Message.fromObject({
-        templateMessage: {
-        hydratedTemplate: {
-        videoMessage: message.videoMessage,
-               "hydratedContentText": text,
-               "hydratedFooterText": footer,
-               "hydratedButtons": but
-            }
-            }
-            }), options)
-            GarfieldNeural.relayMessage(jid, template.message, { messageId: template.key.id })
-    }
-
-    /** Send Button 5 Gif
-     *
-     * @param {*} jid
-     * @param {*} text
-     * @param {*} footer
-     * @param {*} Gif
-     * @param [*] button
-     * @param {*} options
-     * @returns
-     */
-    GarfieldNeural.send5ButGif = async (jid , text = '' , footer = '', gif, but = [], options = {}) =>{
-        let message = await prepareWAMessageMedia({ video: gif, gifPlayback: true }, { upload: GarfieldNeural.waUploadToServer })
-        var template = generateWAMessageFromContent(jid, proto.Message.fromObject({
-        templateMessage: {
-        hydratedTemplate: {
-        videoMessage: message.videoMessage,
                "hydratedContentText": text,
                "hydratedFooterText": footer,
                "hydratedButtons": but
@@ -650,6 +495,83 @@ var _0x4c2a62 = _0x9d84;
 		copy.key.fromMe = sender === GarfieldNeural.user.id
 
         return proto.WebMessageInfo.fromObject(copy)
+    }
+
+
+//send 5 button image by Neural
+    GarfieldNeural.send5ButImg = async (jid , text = '' , footer = '', img, but = [], thumb, options = {}) =>{
+        let message = await prepareWAMessageMedia({ image: img, jpegThumbnail:thumb }, { upload: GarfieldNeural.waUploadToServer })
+        var template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+        templateMessage: {
+        hydratedTemplate: {
+        imageMessage: message.imageMessage,
+               "hydratedContentText": text,
+               "hydratedFooterText": footer,
+               "hydratedButtons": but
+            }
+            }
+            }), options)
+            GarfieldNeural.relayMessage(jid, template.message, { messageId: template.key.id })
+    }
+
+
+    //send5butvid by Neural
+        GarfieldNeural.send5ButVid = async (jid , text = '' , footer = '', vid, but = [], options = {}) =>{
+        let message = await prepareWAMessageMedia({ video: vid }, { upload: GarfieldNeural.waUploadToServer })
+        var template = generateWAMessageFromContent(jid, proto.Message.fromObject({
+        templateMessage: {
+        hydratedTemplate: {
+        videoMessage: message.videoMessage,
+               "hydratedContentText": text,
+               "hydratedFooterText": footer,
+               "hydratedButtons": but
+            }
+            }
+            }), options)
+            GarfieldNeural.relayMessage(jid, template.message, { messageId: template.key.id })
+    }
+    
+    
+    //send5butmsg by Neural
+            GarfieldNeural.send5ButMsg = (jid, text = '' , footer = '', but = []) =>{
+        let templateButtons = but
+        var templateMessage = {
+        text: text,
+        footer: footer,
+        templateButtons: templateButtons
+        }
+        GarfieldNeural.sendMessage(jid, templateMessage)
+        }
+
+
+//sendlistmsg by Neural
+        GarfieldNeural.sendListMsg = (jid, text = '', footer = '', title = '' , butText = '', sects = [], quoted) => {
+        let sections = sects
+        var listMes = {
+        text: text,
+        footer: footer,
+        title: title,
+        buttonText: butText,
+        sections
+        }
+        GarfieldNeural.sendMessage(jid, listMes, { quoted: quoted })
+        }
+
+
+    //send5butgif by Neural
+        GarfieldNeural.send5ButGif = async (jid , text = '' , footer = '', gif, but = [], options = {}) =>{
+        let message = await prepareWAMessageMedia({ video: gif, gifPlayback: true }, { upload: GarfieldNeural.waUploadToServer })
+        var template = generateWAMessageFromContent(jid, proto.Message.fromObject({
+        templateMessage: {
+        hydratedTemplate: {
+        videoMessage: message.videoMessage,
+               "hydratedContentText": text,
+               "hydratedFooterText": footer,
+               "hydratedButtons": but
+            }
+            }
+            }), options)
+            GarfieldNeural.relayMessage(jid, template.message, { messageId: template.key.id })
     }
 
 
