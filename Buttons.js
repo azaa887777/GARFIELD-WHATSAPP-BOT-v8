@@ -8,8 +8,8 @@ global.list = ('لائحة الأوامر 🧬')
 global.allmenu = ('كل الاوامر 🎉')
 global.script = ('🤔 السكربت')
 global.owner = ('المالك 🦋')
-global.deploy = ('الرفع 🐥')
-global.project = ('المشروع 🦋')
+global.deploy = ('لائحة الأوامر 🐥')
+global.project = ('المطور 🦋')
 global.donate = ('التبرع 🚀')
 global.stop = ('توقف 🛑')
 global.skip = ('تخطي ⏩')
